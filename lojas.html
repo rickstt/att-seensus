@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <title>Seensus</title>
+</head>
+<body onload="carregarLojas()">
+    <header>
+        <h1>Seensus Project</h1>
+        <!-- Início do nav -->
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-xxl">
+            <!-- Inicio da logo no nav -->
+            <a href="index.html"><img class="img-fluid" src="assets/logo-sem-fundo.png" alt="Logo do site"></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+            <!-- Fim da logo no nav -->
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  <!-- Inicio da lista de Categoria  -->
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Departamentos
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Assistência Técnica">
+                                <i class="bi bi-bug p-2"></i>
+                                Assistência Técnica
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=TI">
+                                <i class="bi bi-pc-display p-2"></i>
+                                TI
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Games">
+                                <i class="bi bi-controller p-2"></i>
+                                Games
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Eletrônicos">
+                                <i class="bi bi-display p-2"></i>
+                                Eletrônicos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Eletrodomésticos">
+                                <i class="bi bi-phone-landscape p-2"></i>
+                                Eletrodomésticos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Para casa">
+                                <i class="bi bi-house p-2"></i>
+                                Para Casa
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Móveis">
+                                <i class="bi bi-lamp p-2"></i>
+                                Móveis
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Moda">
+                                <i class="bi bi-watch p-2"></i>
+                                Moda
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=PETS">
+                                <i class="bi bi-tencent-qq p-2"></i>
+                                Pets
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Esportes">
+                                <i class="bi bi-bicycle p-2"></i>
+                                Esportes
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Automotivos">
+                                <i class="bi bi-car-front p-2"></i>
+                                Automotivos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="categoria.html?pag=Contrução e ferramentas">
+                                <i class="bi bi-tools p-2"></i>
+                                Construção e ferramentas
+                            </a>
+                        </li>
+                    </ul>
+                <!-- Fim da lista de categoria -->
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="sobre-nos.html">Sobre Nós</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="contato.html">Contato</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="cadastro.html">Anuncie aqui</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="area-exclusiva.html">Área exclusiva</a>
+                  </li>
+                </ul>
+            <!-- Barra de pesquisa -->
+                <form class="d-flex" role="search">
+                  <input class="form-control input-buscar me-2" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-primary btn-buscar" type="submit"><i class="bi bi-search"></i></button>
+                </form>
+            <!-- Fim da barra de pesquisa -->
+              </div>
+            </div>
+        </nav>
+        <!-- Fim do nav -->
+    </header>
+
+    <main>
+        <div id="dadosLojas" class="container-xxl">
+        </div>
+    </main> 
+
+    <footer>
+        <div class="container-xxl">
+            <div class="row pt-footer text-center px-5">
+                <div class="descricao-rodape col">
+                    <div class="h6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque error, quae eligendi ipsa est beatae laboriosam possimus eos, maiores nisi ducimus accusantium, non assumenda ullam? Maxime voluptate magnam minima consequuntur.</div>
+                    <div><a href="index.html" class="img-fluid"><img src="assets/SEENSUS-fundo-preview.png" alt="Logo do site"></a></div>
+                </div>
+    
+                <div class="insitucional-rodape col">
+                    <div class="h5">Institucional</div>
+                    <div>
+                        <ul class="p-1">
+                            <li class="p-1"><a href="politicas.html">Politicas de privacidade</a></li>
+                            <li class="p-1"><a href="faq.html">Como inscrever minha loja?</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Inicio das redes sociais -->
+                <div class="social-rodape col">
+                    <div class="h5">Nossas redes sociais</div>
+                    <div>
+                        <ul class="p-1">
+                            <li class="p-1">
+                                <a href="">
+                                    <i class="bi bi-instagram"></i>
+                                    Instagram
+                                </a>
+                            </li>
+                            <li class="p-1">
+                                <a href="">
+                                    <i class="bi bi-facebook"></i>
+                                    Facebook
+                                </a>
+                            </li>
+                            <li class="p-1">
+                                <a href="">
+                                    <i class="bi bi-youtube"></i>
+                                    Youtube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Fim das redes sociais -->
+                <hr>
+                <div class="copy-footer pt-2 d-flex justify-content-between">
+                    <div>&copy; Copyright 2023 - Seensus Project</div>
+                    <div>Powered by <a href="https://github.com/Seensus-Group/">Seensus Group Inc.</a></div>
+                </div>
+            </div>
+    
+            
+        </div>
+    </footer>
+
+    <script src="js/index.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>
