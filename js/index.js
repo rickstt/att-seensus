@@ -101,7 +101,6 @@ function carregarCategoria() {
 
 function infoLojas() {
     key = window.location.search.substring(5, window.location.search.length);
-    alert(key)
     const estruturaLojas = document.getElementById("dadosLojas");
     
     fetch("http://127.0.0.1:5062/store/listbyid/"+key, {
@@ -113,17 +112,22 @@ function infoLojas() {
     }).then((response) => response.json()).then((result) => {
         result.data.map((item, index) => {
             let divList = document.createElement("div");
-            divList.style.height = "150px";
+            divList.style.height = "300px";
             divList.setAttribute("class", "card m-3");
             divList.innerHTML = `
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
+            <div class="row p-2">
+                <div class="col">
+                    <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 200px;width:400px;object-fit:contain" alt="...">
                 </div>
-                <div class="col-md-8">
+                <div class="col-8">
                     <div class="card-body">
-                        <h5 class="card-title">${item.nome}</h5>
+                        <h5 class="card-title text-center">${item.nome}</h5>
                         <p class="card-text">${item.descricao}</p>
+                        <p class="card-text">${item.telefone}</p>
+                        <p class="card-text">${item.categoria}</p>
+                        <p class="card-text">${item.cnpj}</p>
+                        <p class="card-text">${item.logradouro}</p>
+                        <p class="card-text">${item.cep}</p>
                     </div>
                 </div>
             </div>
