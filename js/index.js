@@ -1,9 +1,137 @@
 const btnlogin = document.getElementById("btnLogin");
 const txtemail = document.getElementById("txtEmail");
 const txtsenha = document.getElementById("txtSenha");
+const txtbuscar = document.getElementById("txtbuscar");
+const btnbuscar = document.getElementById("btnbuscar");
 let autenticado;
 let token;
-let key;
+let key = "";
+
+
+function carregarDados() {
+    key = window.location.search.substring(5, window.location.search.length);
+    const estrutura = document.getElementById("estrutura");
+    
+    let url1 = "http://127.0.0.1:5062/store/list";
+    let url2 = `http://127.0.0.1:5062/store/listbyname/${key}`;
+    let url="";
+    if(key=="" || key==null || !key){
+        url = url1;
+    }
+    else{
+        url = url2;
+    }
+        
+        estrutura.innerHTML="";
+
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "accept": "application/json",
+                "content-type": "application/json"
+            }
+        }).then((response) => response.json()).then((result) => {
+            result.data.map((item, index) => {
+                
+                let divList = document.createElement("div");
+                divList.style.height = "150px";
+                divList.setAttribute("class", "card m-3");
+                divList.innerHTML = `
+                <a href="lojas.html?pag=${item.idloja}" class="nav-link">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">${item.nome}</h5>
+                                <p class="card-text">${item.descricao}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                `;
+                estrutura.appendChild(divList);
+            })
+        }).catch((error) => console.log(`Erro ao executar API -> ${error}`));
+
+};
+
+btnbuscar.onclick = () =>{
+    window.location.replace(`listar.html?pag=${txtbuscar.value}`);
+}
+
+
+function carregarCategoria() {
+    key = window.location.search.substring(5, window.location.search.length);
+
+    const estrutura = document.getElementById("estrutura");
+
+    fetch("http://127.0.0.1:5062/store/listbycategory/"+key, {
+        method: "GET",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+    }).then((response) => response.json()).then((result) => {
+        result.data.map((item, index) => {
+            let divList = document.createElement("div");
+            divList.style.height = "150px";
+            divList.setAttribute("class", "card m-3");
+            divList.innerHTML = `
+            <a href="lojas.html?pag=${item.idloja}" class="nav-link">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">${item.nome}</h5>
+                            <p class="card-text">${item.descricao}</p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            `;
+            estrutura.appendChild(divList);
+        })
+    }).catch((error) => console.log(`Erro ao executar API -> ${error}`));
+};
+
+
+function infoLojas() {
+    key = window.location.search.substring(5, window.location.search.length);
+    alert(key)
+    const estruturaLojas = document.getElementById("dadosLojas");
+    
+    fetch("http://127.0.0.1:5062/store/listbyid/"+key, {
+        method: "GET",
+        headers: {
+            "accept": "application/json",
+            "content-type": "application/json"
+        }
+    }).then((response) => response.json()).then((result) => {
+        result.data.map((item, index) => {
+            let divList = document.createElement("div");
+            divList.style.height = "150px";
+            divList.setAttribute("class", "card m-3");
+            divList.innerHTML = `
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title">${item.nome}</h5>
+                        <p class="card-text">${item.descricao}</p>
+                    </div>
+                </div>
+            </div>
+            `;
+            estruturaLojas.appendChild(divList);
+        })
+    }).catch((error) => console.log(`Erro ao executar API -> ${error}`));
+}
 
 // Função para login de usuarios
 btnLogin.onclick = () => {
@@ -44,104 +172,3 @@ btnLogin.onclick = () => {
     }
 }
 // Fim do login dos usuarios
-
-function carregarDados() {
-    key = window.location.search.substring(5, window.location.search.length);
-
-    const estrutura = document.getElementById("estrutura");
-
-    fetch("http://127.0.0.1:5062/store/list", {
-        method: "GET",
-        headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        }
-    }).then((response) => response.json()).then((result) => {
-        result.data.map((item, index) => {
-            let divList = document.createElement("div");
-            divList.style.height = "150px";
-            divList.setAttribute("class", "card m-3");
-            divList.innerHTML = `
-            <a href="" class="nav-link">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${item.nome}</h5>
-                            <p class="card-text">${item.descricao}</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            `;
-            estrutura.appendChild(divList);
-        })
-    }).catch((error) => console.log(`Erro ao executar API -> ${error}`));
-};
-
-
-function carregarCategoria() {
-    key = window.location.search.substring(5, window.location.search.length);
-
-    const estrutura = document.getElementById("estrutura");
-
-    fetch("http://127.0.0.1:5062/store/listbycategory/"+key, {
-        method: "GET",
-        headers: {
-            "accept": "application/json",
-            "content-type": "application/json"
-        }
-    }).then((response) => response.json()).then((result) => {
-        result.data.map((item, index) => {
-            let divList = document.createElement("div");
-            divList.style.height = "150px";
-            divList.setAttribute("class", "card m-3");
-            divList.innerHTML = `
-            <a href="" class="nav-link">
-                <div class="row">
-                    <div class="col-md-4">
-                        <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">${item.nome}</h5>
-                            <p class="card-text">${item.descricao}</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            `;
-            estrutura.appendChild(divList);
-        })
-    }).catch((error) => console.log(`Erro ao executar API -> ${error}`));
-};
-
-function carregarLojas() {
-
-
-    const estrutura2 = document.getElementById("dadosLojas");
-    map((item, index) => {
-        let divList = document.createElement("div");
-        divList.style.height = "150px";
-        divList.setAttribute("class", "card m-3");
-        divList.innerHTML = `
-        <a href="" class="nav-link">
-            <div class="row">
-                <div class="col-md-4">
-                    <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">${item.nome}</h5>
-                        <p class="card-text">${item.descricao}</p>
-                    </div>
-                </div>
-            </div>
-        </a>
-        `;
-        estrutura2.appendChild(divList);
-    })
-}
-
