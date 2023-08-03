@@ -4,7 +4,9 @@
     box-sizing: border-box;
     font-family: 'QuickSand', Arial, Helvetica, sans-serif;
 }
-
+html,body {
+    overflow-x: hidden !important;
+}
 h1 {
     display: none;
 }
@@ -65,9 +67,3 @@ footer a:hover {
     transition: 0.5s all;
 }
 /* fim css do rodape */
-
-@media screen and (min-width: 0px) and (max-width: 576px) {
-    .info-mobile {
-        display: none;
-    }
-}
