@@ -40,7 +40,7 @@ function carregarDados() {
                 <a href="lojas.html?pag=${item.idloja}" class="nav-link">
                     <div class="row">
                         <div class="col-md-4">
-                            <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
+                            <img src="${item.foto}" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">
@@ -82,7 +82,7 @@ function carregarCategoria() {
             <a href="lojas.html?pag=${item.idloja}" class="nav-link">
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
+                        <img src="${item.foto}" class="img-fluid rounded" style="height: 150px;width:400px;object-fit:contain" alt="...">
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
@@ -117,7 +117,7 @@ function infoLojas() {
             divList.innerHTML = `
             <div class="row p-2">
                 <div class="col">
-                    <img src="assets/logo-sem-fundo.png" class="img-fluid rounded" style="height: 200px;width:400px;object-fit:contain" alt="...">
+                    <img src="${item.foto}" class="img-fluid rounded" style="height: 200px;width:400px;object-fit:contain" alt="...">
                 </div>
                 <div class="col-8">
                     <div class="card-body">
